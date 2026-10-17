@@ -143,7 +143,7 @@ def options(tmp_path, base):
 
 
 def receipt(result):
-    return parse_json(__import__("pathlib").Path(result["receipt_path"]).read_bytes())
+    return json.loads(__import__("pathlib").Path(result["receipt_path"]).read_bytes())
 
 
 def test_actual_compiled_graph_four_original_complete_sdk_roles_and_independent_inputs(

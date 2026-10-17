@@ -13,7 +13,7 @@ def main(argv=None):
     commands = parser.add_subparsers(dest="command", required=True)
     init = commands.add_parser("init")
     init.add_argument("--db", required=True)
-    inputs = init.add_mutually_exclusive_group(required=True)
+    inputs = init.add_mutually_exclusive_group()
     inputs.add_argument("--contract")
     inputs.add_argument("--fixture")
     init.add_argument("--document-id", default="D-701")
@@ -33,7 +33,7 @@ def main(argv=None):
         if args.command == "init":
             if args.fixture:
                 source = ManagedSource.seed(args.db, args.fixture)
-            else:
+            elif args.contract:
                 raw, _ = read_original(args.contract)
                 fixture = {
                     "documents": [make_document(args.document_id, raw)],
@@ -43,6 +43,10 @@ def main(argv=None):
                 source = ManagedSource.seed_bytes(
                     args.db, canonical(fixture).encode("utf-8", errors="strict")
                 )
+            else:
+                from .assets import read_asset
+
+                source = ManagedSource.seed_bytes(args.db, read_asset("starter.json"))
         else:
             source = ManagedSource(args.db)
         try:

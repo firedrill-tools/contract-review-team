@@ -36,3 +36,19 @@ uv run --locked --group dev pytest -q
 Tests exercise actual compiled LangGraph and actual provider SDKs against owned synthetic HTTP responses, plus actual source files/SQLite/CLI/signals. No paid provider, model quality, legal correctness, actual billing or new Firedrill persisted integration is qualified. The original six controlled-role compiled graph tests and original Markdown fixture remain useful human compatibility seams in `workflow.py`; that module's legacy `run_review` is not the normal owned CLI. Legacy LangChain dependencies remain for those seams. The installed Anthropic LangChain wrapper uses cached clients without a public supplied-client hook, so the normal graph uses the actual provider SDKs directly to own per-run lifecycle.
 
 Live models/keys/budget, real contracts and legal review, new Firedrill release qualification, publication and license decisions remain external gates. This repository remains private without a license pending that decision. See [PLAN.md](PLAN.md) for implementation evidence and [Firedrill example catalog](https://github.com/firedrill-tools/firedrill-example-catalog) for the portfolio.
+
+## Twelve installed cases and distributions
+
+```sh
+uv run contract-review-cases list
+uv run contract-review-cases init --case busy-01 --root /tmp/contracts-busy
+uv run contract-review-cases inspect --root /tmp/contracts-busy
+uv run contract-review-cases reset --root /tmp/contracts-busy --new-root /tmp/contracts-busy-reset
+uv run python scripts/generate_populations.py --check
+uv build
+uv run --group dev python scripts/check_distribution.py
+```
+
+Case setup/inspection returns private controls and reference outcomes. Use only the selected document/request/independent write flag for a normal review. Each of four profiles has three cases; busy cases include24contracts,8superseded human packets and96replayed human steps. See [scenario details](scenarios/README.md) and [qualification boundaries](COMPATIBILITY.md). Default `contract-review-state init --db NEW` uses the exact pinned installed starter; explicit Markdown/JSON imports still require original unshared files. The wheel also retains the original Markdown bytes as a pinned read-only asset.
+
+Distribution qualification creates fresh locked wheel production, sdist production, complete full and complete production environments outside checkout; production has no pytest. All12cases run through actual native SDK HTTP and private CLI preserving resets, followed by normal CLI complete/unfinished/SIGINT/SIGTERM/SIGHUP/default-seed/missing-key checks. The complete suite and deterministic source manifest are also verified. CI uploads its complete source artifact for independent byte-for-byte comparison; the catalog records the exact qualified revision and evidence.

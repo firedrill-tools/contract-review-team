@@ -1,10 +1,7 @@
-# Scenarios
+# Private synthetic contract cases
 
-Use a synthetic numbered agreement and inspect the structured report, not just the narrative.
+`contract-review-cases list`, `init --case ID --root NEW`, `inspect --root ROOT` and `reset --root OLD --new-root NEW` are model-free private controls. Never feed their private snapshots/references/oracles to a model. Use only the selected document and requested normal review arguments with `contract-review`.
 
-- **Complete review:** extract sourced terms from C1-C6, run both risk reviewers, reconcile and summarize.
-- **Notice conflict:** C1 says 30 days and C2 says 60 days. Preserve both periods and require human review.
-- **Missed obligation:** omit C6 from extraction. Stop before risk and summary models and report incomplete coverage.
-- **Fabricated citation:** cite text absent from a clause or reference C99. Mark the extraction or review unsupported.
-- **Legitimate disagreement:** Anthropic and OpenAI reviewers rate the same terms differently. Keep both positions and flag reconciliation.
-- **Consistent terms:** change C2 to 30 days and provide agreeing risk reviews. The structural conflict flag clears, though the report remains a review aid.
+Three cases each cover starter, busy, ambiguous and boundary profiles. Busy populations include24contracts,8superseded human review packets and96fully replayed human steps. Cases exercise independent rating differences, source-grounded notice candidates, readonly preview, two separately selected documents, literal Unicode/instruction-like source, missing extraction/reviewer units, actual selected-document revision during HTTP, unfinished summary and a summary that drops warning references. No earlier native model/authentication/legal approval is fabricated.
+
+`python scripts/generate_populations.py --check` regenerates in a temporary directory and compares exact pins without editing source. `python scripts/qualify_cases.py` exercises all12installed normal actual graph/SDK paths with46owned HTTP requests, then verifies a separate reset preserves old source, historical packets, audit and receipt bytes. These controlled responses do not qualify model semantics or legal decisions.

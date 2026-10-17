@@ -4,7 +4,8 @@ build-backend = "hatchling.build"
 
 [project]
 name = "contract-review-team"
-version = "0.1.0"
+version = "0.2.0"
+readme = "README.md"
 description = "LangGraph contract extraction, dual risk review and summary roles"
 requires-python = ">=3.12"
 dependencies = [
@@ -15,6 +16,7 @@ dependencies = [
 
 [project.scripts]
 contract-review = "contract_review.cli:main"
+contract-review-cases = "contract_review.cases:main"
 contract-review-state = "contract_review.managed_cli:main"
 
 [dependency-groups]
@@ -25,3 +27,6 @@ packages = ["src/contract_review"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src", "fixtures", "scenarios", "tests", "scripts", ".github", "README.md", "AGENTS.md", "PLAN.md", "COMPATIBILITY.md", "pyproject.toml", "uv.lock", ".gitignore"]

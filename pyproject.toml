@@ -7,14 +7,18 @@ name = "contract-review-team"
 version = "0.1.0"
 description = "LangGraph contract extraction, dual risk review and summary roles"
 requires-python = ">=3.12"
-dependencies = ["langgraph==1.2.15", "langchain-anthropic==1.7.6", "langchain-openai==1.7.2", "pydantic>=2.12,<3"]
+dependencies = [
+    "langgraph==1.2.15", "langchain-anthropic==1.7.6", "langchain-openai==1.7.2",
+    "langchain-core==1.6.10", "langsmith==0.14.9", "anthropic==1.14.0",
+    "openai==3.31.0", "httpx2==2.13.1", "pydantic==2.14.1",
+]
 
 [project.scripts]
 contract-review = "contract_review.cli:main"
 contract-review-state = "contract_review.managed_cli:main"
 
 [dependency-groups]
-dev = ["pytest>=8,<10"]
+dev = ["pytest==9.1.1"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/contract_review"]

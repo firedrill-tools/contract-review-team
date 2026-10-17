@@ -182,7 +182,7 @@ def summary(document, reconciliation, value):
     )
     text(value["narrative"], 20, 12000)
     for field in ("unit_ids", "notice_candidate_ids", "rating_difference_ids"):
-        ids = listed(value[field])
+        ids = listed(value[field], 129 if field == "rating_difference_ids" else 128)
         if any(type(ident) is not str for ident in ids) or len(set(ids)) != len(ids):
             raise ValueError("exact unique summary references required")
     if not value["unit_ids"]:

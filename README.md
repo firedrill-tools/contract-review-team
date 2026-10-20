@@ -1,6 +1,8 @@
-# Contract review team
+# Contract review team with LangGraph, Anthropic and OpenAI
 
 An actual async LangGraph runs extraction, two independent risk reviews, deterministic reconciliation, summary and packet publication over a local synthetic contract workspace. Anthropic performs extraction and one review; OpenAI independently reviews and summarizes. Each role uses the actual async provider SDK over a per-run owned HTTPX2 client. Whole original structured responses must be complete before SDK parsing or state changes.
+
+Simulate this LangGraph AI agent with [Firedrill](https://firedrill.run/), a simulation platform for AI agents. Start with the [Firedrill setup and simulation guide](firedrill/README.md); your coding agent can operate it while this application's runner stays in your repository or CI.
 
 ## Run locally
 
@@ -33,9 +35,9 @@ No automatic retry, fallback, ambient provider routing, shared client cache, tra
 uv run --locked --group dev pytest -q
 ```
 
-Tests exercise actual compiled LangGraph and actual provider SDKs against owned synthetic HTTP responses, plus actual source files/SQLite/CLI/signals. No paid provider, model quality, legal correctness, actual billing or new Firedrill persisted integration is qualified. The original six controlled-role compiled graph tests and original Markdown fixture remain useful human compatibility seams in `workflow.py`; that module's legacy `run_review` is not the normal owned CLI. Legacy LangChain dependencies remain for those seams. The installed Anthropic LangChain wrapper uses cached clients without a public supplied-client hook, so the normal graph uses the actual provider SDKs directly to own per-run lifecycle.
+Tests exercise actual compiled LangGraph and actual provider SDKs against owned synthetic HTTP responses, plus actual source files/SQLite/CLI/signals. No paid provider, model quality, legal correctness, actual billing or authenticated Firedrill persistence is qualified. The original six controlled-role compiled graph tests and original Markdown fixture remain useful human compatibility seams in `workflow.py`; that module's legacy `run_review` is not the normal owned CLI. Legacy LangChain dependencies remain for those seams. The installed Anthropic LangChain wrapper uses cached clients without a public supplied-client hook, so the normal graph uses the actual provider SDKs directly to own per-run lifecycle.
 
-Live models/keys/budget, real contracts and legal review, new Firedrill release qualification, publication and license decisions remain external gates. This repository remains private without a license pending that decision. See [PLAN.md](PLAN.md) for implementation evidence and [Firedrill example catalog](https://github.com/firedrill-tools/firedrill-example-catalog) for the portfolio.
+Live models/keys/budget, real contracts and legal review, authenticated Firedrill persistence verification, publication and license decisions remain external gates. This repository remains private without a license pending that decision. See [PLAN.md](PLAN.md) for implementation evidence and [Firedrill example catalog](https://github.com/firedrill-tools/firedrill-example-catalog) for the portfolio.
 
 ## Twelve installed cases and distributions
 
